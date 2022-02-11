@@ -41,7 +41,8 @@ export const styles = StyleSheet.create({
       },
     
       areaTouch: {
-        width: '90%'
+        width: '90%',
+        marginTop: 8
       },
     
       botaoArea: {
@@ -55,7 +56,7 @@ export const styles = StyleSheet.create({
       botaoTexto: {
         fontFamily: theme.fonts.title700,
         fontSize: 18,
-
+        letterSpacing: 0.6,
         color: '#fff',
         // fontWeight: 'bold',
       },

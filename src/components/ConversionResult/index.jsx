@@ -1,27 +1,33 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { styles } from './styles';
+import { theme } from '../../global/styles/theme';
 
 export default function ConversionResult(props){
+    const colorOne = theme.colors.primary80;
+    const colorTwo = theme.colors.secondary80;
+    
     return(
         <LinearGradient style={styles.container}
-            colors={['#E80B0B', '#DC4F00']}
+            colors={[ colorOne, colorTwo ]}
         > 
             <TouchableOpacity style={styles.containerTouch} onPress={props.fechar}>
-                <Text style={styles.fecharModal}>FECHAR</Text>
+                <Image style={styles.fecharModal}
+                    source={require('../../assets/close.png')}
+                />
             </TouchableOpacity>
 
-            <Text style={styles.titulo}>
+            <Text style={[styles.titulo, { marginTop: -20,fontFamily: theme.fonts.title800, fontSize: 24}]}>
                 {props.valorMoeda} {props.moedaSelecionada} 
             </Text>
             
-            <Text style={[styles.titulo, { fontSize: 18, margin: 10 }]}>
-                Corresponde a
+            <Text style={[styles.titulo, { fontSize: 18, marginTop: 22, fontFamily: theme.fonts.title600 }]}>
+                corresponde a
             </Text>
 
-            <Text style={styles.titulo}>
+            <Text style={[styles.titulo, { fontSize: 32, fontFamily: theme.fonts.title800 }]}>
                 {props.valorConvertido}
             </Text>
         

@@ -6,7 +6,16 @@ import ConversionResult from './src/components/ConversionResult';
 import Picker from './src/components/Picker';
 import api from './src/services/api';
 
+import { styles } from './styles';
+import { theme } from './src/global/styles/theme';
+
+import AppLoading from 'expo-app-loading';
+import { useFonts } from 'expo-font';
+import { NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_800ExtraBold   } from '@expo-google-fonts/nunito-sans';
+
 export default function App() {
+
+
   const [visibleModal, setVisibleModal] = useState(false);
   const [moedas, setMoedas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -58,14 +67,17 @@ export default function App() {
 
   }
 
-  if(loading){
-    return(
-      <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-        <ActivityIndicator color='#fff' size={45}/>
-      </View>
-    )
+  const [fontsLoaded] = useFonts({
+    NunitoSans_400Regular, 
+    NunitoSans_700Bold, 
+    NunitoSans_600SemiBold,
+    NunitoSans_800ExtraBold
+  });
 
-  }else{
+  if(!fontsLoaded){
+    return <AppLoading/>
+  }
+
     return(
       <LinearGradient style={styles.container}
         colors={['#2C2D30', '#090A0A']}
@@ -79,7 +91,7 @@ export default function App() {
           <TextInput 
             style={styles.input}
             placeholder='Digite o valor'
-            placeholderTextColor='#B2B2B2'
+            placeholderTextColor={theme.colors.textInput}
             keyboardType='numeric'
             onChangeText={(valor) => setMoedaBValor(valor)}
           />
@@ -87,7 +99,7 @@ export default function App() {
   
         <TouchableOpacity style={styles.areaTouch} onPress={converter}>
           <LinearGradient style={styles.botaoArea} 
-           colors={['#54575C', '#313336']}
+           colors={['#4C4E51', '#333538']}
           > 
             <Text style={styles.botaoTexto}>Converter</Text>
           </LinearGradient>
@@ -106,66 +118,5 @@ export default function App() {
         <StatusBar />
       </LinearGradient>
     );
-  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#2C2D30',
-    alignItems: 'center',
-    paddingTop: 40,
-  },
-
-  areaMoeda: {
-    width: '90%',
-    borderWidth: 2,
-    borderColor: '#44464A',
-    paddingLeft: 8,
-    borderRadius: 8,
-    marginBottom: 12
-  },
-
-  titulo: {
-    fontSize: 15,
-    color: '#B2B2B2',
-    paddingTop: 12,
-    paddingLeft: 12
-  },
- 
-  areaValor: {
-    width: '90%',
-    borderWidth: 2,
-    borderColor: '#44464A',
-    borderRadius: 8,
-    justifyContent: 'center'
-  },
-
-  input: {
-    height: 45,
-    paddingLeft: 10,
-    paddingBottom: 10,
-    fontSize: 15,
-    marginTop: 8,
-    color: '#fff'
-  },
-
-  areaTouch: {
-    width: '90%'
-  },
-
-  botaoArea: {
-    marginTop: 18,
-    height: 64,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
-  botaoTexto: {
-    fontSize: 18,
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-
-});

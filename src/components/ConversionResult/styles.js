@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { theme } from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
@@ -13,18 +14,18 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: 8,
     },
 
+    fecharModal: {
+        marginLeft: 30,
+        marginTop: 20
+    },
+ 
     containerTouch: {
         marginBottom: 90,
         marginRight: -240
     },
 
-    fecharModal: {
-        fontSize: 22,
-    },
-
     titulo: {
-        fontSize: 39,
-        fontWeight: 'bold',
-        color: '#fff'
+
+        color: '#fff',
     }
 })

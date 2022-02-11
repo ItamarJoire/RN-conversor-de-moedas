@@ -1,12 +1,12 @@
 import React from 'react';
 import RNPickerSelect from 'react-native-picker-select';
+import { theme } from '../../global/styles/theme'; 
 
 export default function Picker(props){
     const placeholder = {
         label: 'Selecione uma moeda...',
         value: null,
-        color: '#B2B2B2',
-    
+        color: theme.colors.textInput,
     }
 
     return(
@@ -16,13 +16,13 @@ export default function Picker(props){
             onValueChange={(valor) => props.onChange(valor)}
             style={{
                 inputIOS: {
-                    fontSize: 20,
-                    color: 'green'
+                    fontSize: 18,
+                    color: '#fff'
                 },
 
                 inputAndroid: {
-                    fontSize: 20,
-                    color: '#fff'
+                    fontSize: 18,
+                    color: '#fff',
                 },
 
             }}

@@ -11,14 +11,12 @@ import { theme } from './src/global/styles/theme';
 
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
-import { NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_800ExtraBold   } from '@expo-google-fonts/nunito-sans';
+import { NunitoSans_400Regular, NunitoSans_700Bold, NunitoSans_600SemiBold, NunitoSans_800ExtraBold } from '@expo-google-fonts/nunito-sans';
 
 export default function App() {
-
-
   const [visibleModal, setVisibleModal] = useState(false);
   const [moedas, setMoedas] = useState([]);
-  const [loading, setLoading] = useState(true);
+
 
   const [moedaSelecionada, setMoedaSelecionada] = useState(null);
   const [moedaBValor, setMoedaBValor] = useState(0);
@@ -41,7 +39,6 @@ export default function App() {
       })
 
       setMoedas(arrayMoedas);
-      setLoading(false)
     }
 
     loadMoedas();

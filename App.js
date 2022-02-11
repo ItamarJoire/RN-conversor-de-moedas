@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ActivityIndicator, Keyboard, Modal } from 'react-native';
+import { StyleSheet, Text, View, TextInput, StatusBar, TouchableOpacity, ActivityIndicator, Keyboard, Modal } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import ConversionResult from './src/components/ConversionResult';
@@ -88,7 +88,7 @@ export default function App() {
         <TouchableOpacity style={styles.areaTouch} onPress={converter}>
           <LinearGradient style={styles.botaoArea} 
            colors={['#54575C', '#313336']}
-          >
+          > 
             <Text style={styles.botaoTexto}>Converter</Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -101,15 +101,11 @@ export default function App() {
               moedaSelecionada={moedaSelecionada}
               fechar={() => setVisibleModal(false)}/>
           </Modal>
-        )}
+        )}        
 
-  
-        <StatusBar barStyle='light-content' />
-        
+        <StatusBar />
       </LinearGradient>
-
     );
-    
   }
 }
 
@@ -169,7 +165,7 @@ const styles = StyleSheet.create({
   botaoTexto: {
     fontSize: 18,
     color: '#fff',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 
 });

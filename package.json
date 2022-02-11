@@ -19,7 +19,8 @@
     "react-native": "0.64.3",
     "react-native-picker-select": "^8.0.4",
     "react-native-web": "0.17.1",
-    "expo-linear-gradient": "~11.0.3"
+    "expo-linear-gradient": "~11.0.3",
+    "expo-font": "~10.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

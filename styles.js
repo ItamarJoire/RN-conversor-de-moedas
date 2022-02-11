@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
       input: {
         height: 45,
         paddingLeft: 16,
-        paddingBottom: 10,
+        paddingBottom: 10, 
         fontSize: 15,
         marginTop: 8,
         color: '#fff'
@@ -58,6 +58,6 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         letterSpacing: 0.6,
         color: '#fff',
-        // fontWeight: 'bold',
+  
       },
 })

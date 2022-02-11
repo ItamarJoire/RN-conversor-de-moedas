@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ActivityIndicator, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ActivityIndicator, Keyboard, Modal } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import ConversionResult from './src/components/ConversionResult';
 import Picker from './src/components/Picker';
 import api from './src/services/api';
 
 export default function App() {
+  const [visibleModal, setVisibleModal] = useState(false);
   const [moedas, setMoedas] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -50,6 +52,7 @@ export default function App() {
     setValorConvertido(`R$ ${resultado.toFixed(2)}`);
     setValorMoeda(moedaBValor);
 
+    setVisibleModal(true);
     // Aqui fecha o teclado caso esteja aberto
     Keyboard.dismiss();
 
@@ -91,19 +94,13 @@ export default function App() {
         </TouchableOpacity>
       
         {valorConvertido !== 0 && (
-          <LinearGradient style={styles.areaResultado}
-            colors={['#E80B0B', '#DC4F00']}
-          > 
-            <Text style={styles.valorConvertido}>
-              {valorMoeda} {moedaSelecionada} 
-            </Text>
-            <Text style={[styles.valorConvertido, { fontSize: 18, margin: 10 }]}>
-              Corresponde a
-            </Text>
-            <Text style={styles.valorConvertido}>
-              {valorConvertido}
-            </Text>
-          </LinearGradient>
+          <Modal transparent={true} animationType='slide' visible={visibleModal}>
+            <ConversionResult 
+              valorConvertido={valorConvertido} 
+              valorMoeda={valorMoeda}
+              moedaSelecionada={moedaSelecionada}
+              fechar={() => setVisibleModal(false)}/>
+          </Modal>
         )}
 
   
@@ -175,20 +172,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
 
-  areaResultado: {
-    borderRadius: 8,
-    width: '90%',
-    backgroundColor: '#fff',
-    marginTop: 35,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 25,
-    paddingVertical: 45
-  },
-
-  valorConvertido: {
-    fontSize: 39,
-    fontWeight: 'bold',
-    color: '#fff'
-  }
 });
